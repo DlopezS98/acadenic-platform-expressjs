@@ -1,9 +1,14 @@
+/* eslint-disable import/order */
+/* eslint-disable no-console */
+/* Paths & container must be at the beginning to load
+  the relative paths & metadata for inversify */
 import InversifyDIContainer from './inversify.config';
+
+import { getRouteInfo, RouteInfo } from 'inversify-express-utils';
+import { Container } from 'inversify';
+import prettyjson from 'prettyjson';
 import Environment from './config/environment';
 import Application from './app';
-import { Container } from 'inversify';
-import { getRouteInfo, RouteInfo } from 'inversify-express-utils';
-import prettyjson from 'prettyjson';
 
 export default class Startup {
 	private readonly application: Application;
