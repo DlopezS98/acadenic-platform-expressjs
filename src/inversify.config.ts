@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Container } from "inversify";
+import { Container } from 'inversify';
 
 // DI: Dependency Injection
 export default class InversifyDIContainer {
@@ -7,7 +7,7 @@ export default class InversifyDIContainer {
 
 	constructor() {
 		this.container = new Container({
-			defaultScope: "Singleton",
+			defaultScope: 'Singleton',
 		});
 	}
 
