@@ -9,6 +9,7 @@ import { Container } from 'inversify';
 import prettyjson from 'prettyjson';
 import Environment from './config/environment';
 import Application from './app';
+import { isErrorObject } from './shared/guards/common-types.guard';
 
 export default class Startup {
 	private readonly application: Application;
@@ -30,9 +31,8 @@ export default class Startup {
 			console.log(`Environment: ${app.get('env')}`);
 
 			return { started: true, message };
-		} catch (error: any) {
-			const errorMessage =
-				error?.message ??
+		} catch (error) {
+			const errorMessage = isErrorObject(error) ? error.message :
 				'Unexpected error while trying to start the server...';
 			return {
 				started: false,
