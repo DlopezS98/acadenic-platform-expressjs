@@ -1,10 +1,10 @@
 import { Container } from 'inversify';
 import { urlencoded, json, Application as ExpressApp } from 'express';
 import { InversifyExpressServer } from 'inversify-express-utils';
-import Environment from './config/environment';
-import pkg from '../package.json';
 import morgan from 'morgan';
 import cors from 'cors';
+import Environment from './config/environment';
+import pkg from '../package.json';
 
 // Controllers
 import './controllers';

@@ -16,6 +16,6 @@ export default class HomeController extends BaseApiController {
       author: app.get('pkg').author,
       repository: app.get('pkg').repository,
       license: app.get('pkg').license
-    })
+    });
   }
 }
