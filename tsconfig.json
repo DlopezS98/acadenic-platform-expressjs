@@ -32,7 +32,10 @@
       "@Controllers/*": ["src/controllers/*"],
       "@Shared/*": ["src/shared/*"],
       "@Config/*": ["src/config/*"],
-      "@Database/*": ["src/infrastructure/database/*"]
+      "@Database/*": ["src/infrastructure/database/*"],
+      "@Interfaces/*": ["src/core/interfaces/*"],
+      "@Services/*": ["src/core/services/*"],
+      "@Repositories/*": ["src/infrastructure/repositories/*"]
     },                                      
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */
