@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { controller, httpGet } from 'inversify-express-utils';
-import HttpStatusCodes from 'src/shared/types/http-status-codes';
+import HttpStatusCodes from '@Shared/types/http-status-codes';
 import BaseApiController from './base-api.controller';
 
 @controller('/')

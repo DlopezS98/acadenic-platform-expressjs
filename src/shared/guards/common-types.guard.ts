@@ -1,4 +1,4 @@
-import { GuardedType, Sentinel } from '../types/common.cd';
+import { GuardedType, Sentinel } from '@Shared/types/common.cd';
 
 export const isOfType = <T extends Sentinel>(
   sentinel: T,

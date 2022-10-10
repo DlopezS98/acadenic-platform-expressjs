@@ -17,14 +17,14 @@ export interface TypeOfMap {
 export type Sentinel = ObjectKeys<TypeOfMap>;
 export type GuardedType<T extends Sentinel> = TypeOfMap[T];
 
-export interface HttpResponse<T> {
+export interface IHttpResponse<T> {
   code: HttpStatusCodes;
   message: string;
   success: boolean;
   data?: T;
 }
 
-export type HttpRequestOptions<T> = Partial<Omit<HttpResponse<T>, 'success'>>;
+export type HttpRequestOptions<T> = Partial<Omit<IHttpResponse<T>, 'success'>>;
 
 export type OptionalKeysOf<T> = {
   [K in keyof T]: Record<string, unknown> extends Pick<T, K> ? K : never;
