@@ -6,4 +6,5 @@ addAliases({
   '@Controllers': join(__dirname, 'controllers'),
   '@Shared': join(__dirname, 'shared'),
   '@Config': join(__dirname, 'config'),
+  '@Database': join(__dirname, 'infrastructure', 'database'),
 });
