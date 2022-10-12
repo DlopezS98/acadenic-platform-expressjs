@@ -10,7 +10,10 @@
     "dev:debug": "nodemon --inspect src/index.ts",
     "build:win32": "tsc && tsc-alias && copy ./src/config/*.env ./dist/src/config/",
     "build": "tsc && tsc-alias && cp ./src/config/*.env ./dist/src/config/",
-    "tsc:checker": "tsc --noEmit && eslint --config ./.eslintrc.json ./src/"
+    "tsc:checker": "tsc --noEmit && eslint --config ./.eslintrc.json ./src/",
+    "knex:migrations": "knex",
+    "db:migrate": "knex migrate:latest",
+    "db:migrate:down": "knex migrate:down"
   },
   "repository": {
     "type": "git",
