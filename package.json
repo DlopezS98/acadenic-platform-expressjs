@@ -13,6 +13,7 @@
     "tsc:checker": "tsc --noEmit && eslint --config ./.eslintrc.json ./src/",
     "knex:migrations": "knex",
     "db:migrate": "knex migrate:latest",
+    "db:rollback": "knex migrate:rollback",
     "db:migrate:down": "knex migrate:down"
   },
   "repository": {

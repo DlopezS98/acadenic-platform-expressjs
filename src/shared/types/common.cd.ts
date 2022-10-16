@@ -33,5 +33,11 @@ export type OptionalKeysOf<T> = {
 export type OptionalKeys<T> = Required<Pick<T, OptionalKeysOf<T>>>;
 /** Filter optinal properties and get only the required... */
 export type RequiredKeys<T> = Omit<T, OptionalKeysOf<T>>;
-/** Get a type with a specific property as optional */ 
-export type PartialBy<T, K extends ObjectKeys<T>> = Omit<T, K> & Partial<Pick<T, K>>;
+/** Get a type with a specific property as optional */
+export type PartialBy<T, K extends ObjectKeys<T>> = Omit<T, K> &
+  Partial<Pick<T, K>>;
+export type MimeTypes =
+  | 'application/pdf'
+  | 'image/png'
+  | 'video/mp4'
+  | 'image/jpeg';
