@@ -9,5 +9,7 @@ addAliases({
   '@Database': join(__dirname, 'infrastructure', 'database'),
   '@Interfaces': join(__dirname, 'core', 'interfaces'),
   '@Services': join(__dirname, 'core', 'services'),
-  '@Repositories': join(__dirname, 'infrastruture', 'repositories'),
+  '@Entities': join(__dirname, 'core', 'entities'),
+  '@DTOs': join(__dirname, 'core', 'DTOs'),
+  '@Repositories': join(__dirname, 'infrastructure', 'repositories'),
 });

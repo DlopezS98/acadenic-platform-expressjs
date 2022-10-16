@@ -25,7 +25,7 @@ export default class KnexEnviromentSetup {
       seeds: {
         directory: join(__dirname, 'seeds'),
       },
-      ...knexSnakeCaseMappers,
+      ...knexSnakeCaseMappers(),
     },
     production: {
       client: 'pg',
@@ -43,7 +43,7 @@ export default class KnexEnviromentSetup {
       seeds: {
         directory: join(__dirname, 'seeds'),
       },
-      ...knexSnakeCaseMappers,
+      ...knexSnakeCaseMappers(),
     },
   };
 

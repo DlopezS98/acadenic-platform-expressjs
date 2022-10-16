@@ -35,6 +35,8 @@
       "@Database/*": ["src/infrastructure/database/*"],
       "@Interfaces/*": ["src/core/interfaces/*"],
       "@Services/*": ["src/core/services/*"],
+      "@Entities/*": ["src/core/entities/*"],
+      "@DTOs/*": ["src/core/DTOs/*"],
       "@Repositories/*": ["src/infrastructure/repositories/*"]
     },                                      
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
