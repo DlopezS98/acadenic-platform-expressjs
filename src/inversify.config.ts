@@ -7,6 +7,10 @@ import IResourcesRepository from '@Interfaces/repositories/iresources.repository
 import ResourcesRepository from '@Repositories/resources.repository';
 import IResourcesService from '@Interfaces/services/iresources.service';
 import ResourcesService from '@Services/resources.service';
+import IAuthenticationService from '@Interfaces/services/iauthentication.service';
+import AuthenticationService from '@Services/authentication.service';
+import IUsersService from '@Interfaces/services/iusers.service';
+import UsersService from '@Services/users.service';
 
 // DI: Dependency Injection
 export default class InversifyDIContainer {
@@ -25,12 +29,20 @@ export default class InversifyDIContainer {
       .to(UsersRepository)
       .inRequestScope();
     this.container
+      .bind<IUsersService>(Interfaces.UsersService)
+      .to(UsersService)
+      .inRequestScope();
+    this.container
       .bind<IResourcesRepository>(Interfaces.ResourcesRepository)
       .to(ResourcesRepository)
       .inRequestScope();
     this.container
       .bind<IResourcesService>(Interfaces.ResourcesService)
       .to(ResourcesService)
+      .inRequestScope();
+    this.container
+      .bind<IAuthenticationService>(Interfaces.AuthenticationService)
+      .to(AuthenticationService)
       .inRequestScope();
     return this.container;
   }

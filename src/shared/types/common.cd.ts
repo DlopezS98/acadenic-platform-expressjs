@@ -17,7 +17,7 @@ export interface TypeOfMap {
 export type Sentinel = ObjectKeys<TypeOfMap>;
 export type GuardedType<T extends Sentinel> = TypeOfMap[T];
 
-export interface IHttpResponse<T> {
+export interface IHttpResponse<T = null> {
   code: HttpStatusCodes;
   message: string;
   success: boolean;

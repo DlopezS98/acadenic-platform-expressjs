@@ -1,7 +1,7 @@
 import { IHttpResponse } from '@Shared/types/common.cd';
 import HttpStatusCodes from '@Shared/types/http-status-codes';
 
-export function Ok(message: string): IHttpResponse<null>;
+export function Ok(message: string): IHttpResponse;
 export function Ok<T>(message: string, data: T): IHttpResponse<T>;
 export function Ok<T>(message: string, data?: T): IHttpResponse<T> {
   const response: IHttpResponse<T> = {
@@ -14,7 +14,7 @@ export function Ok<T>(message: string, data?: T): IHttpResponse<T> {
   return response;
 }
 
-export function BadRequest(message: string): IHttpResponse<null>;
+export function BadRequest(message: string): IHttpResponse;
 export function BadRequest<T>(message: string, data: T): IHttpResponse<T>;
 export function BadRequest<T>(message: string, data?: T): IHttpResponse<T> {
   return {
@@ -25,7 +25,7 @@ export function BadRequest<T>(message: string, data?: T): IHttpResponse<T> {
   };
 }
 
-export function Unauthorized(message: string): IHttpResponse<null>;
+export function Unauthorized(message: string): IHttpResponse;
 export function Unauthorized<T>(message: string, data: T): IHttpResponse<T>;
 export function Unauthorized<T>(message: string, data?: T): IHttpResponse<T> {
   return {
@@ -36,8 +36,8 @@ export function Unauthorized<T>(message: string, data?: T): IHttpResponse<T> {
   };
 }
 
-export function InternalServerError(): IHttpResponse<null>; 
-export function InternalServerError(message: string): IHttpResponse<null>; 
+export function InternalServerError(): IHttpResponse; 
+export function InternalServerError(message: string): IHttpResponse; 
 export function InternalServerError<T>(message: string, data: T): IHttpResponse<T>; 
 export function InternalServerError<T>(message?: string, data?: T): IHttpResponse<T> {
   return {

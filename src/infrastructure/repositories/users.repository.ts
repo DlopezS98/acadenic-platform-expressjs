@@ -3,9 +3,25 @@ import IUser, { Columns, PartialUser } from '@Entities/user.entity';
 import { isOfType } from '@Shared/guards/common-types.guard';
 import Users from '@Database/models/users.model';
 import { injectable } from 'inversify';
+import { compare } from 'bcrypt';
 
 @injectable()
 export default class UsersRepository implements IUsersRepository {
+
+  matchPassword(currentPassword: string, incomingPassword: string): Promise<boolean> {
+    return compare(currentPassword, incomingPassword);
+  }
+
+  async getByEmail(email: string): Promise<IUser | undefined> {
+    const userModel = await Users.query().findOne('normalizedEmail', email);
+    return userModel ? this.mapModelToEntity(userModel) : undefined;
+  }
+
+  async getByUsername(username: string): Promise<IUser | undefined> {
+    const userModel = await Users.query().findOne('normalizedUsername', username);
+    return userModel ? this.mapModelToEntity(userModel) : undefined;
+  }
+
   async create(user: PartialUser): Promise<IUser> {
     const userModel = await Users.query().insert(user);
     return this.mapModelToEntity(userModel);

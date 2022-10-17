@@ -6,15 +6,10 @@ export interface SignInRequestDTO {
 export interface SignInResponseDTO {
   username: string;
   email: string;
-  jwt: {
-    token: string;
-    expiresIn: string;
-  }
+  jwt: { token: string; expiresIn: string };
 }
 
 export interface SignUpRequestDTO {
-  firstname: string;
-  lastname: string;
   username: string;
   email: string;
   password: string;
