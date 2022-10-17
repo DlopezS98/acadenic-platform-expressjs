@@ -12,4 +12,5 @@ addAliases({
   '@Entities': join(__dirname, 'core', 'entities'),
   '@DTOs': join(__dirname, 'core', 'DTOs'),
   '@Repositories': join(__dirname, 'infrastructure', 'repositories'),
+  '@Middlewares': join(__dirname, 'middlewares'),
 });

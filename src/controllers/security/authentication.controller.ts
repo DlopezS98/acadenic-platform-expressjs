@@ -43,7 +43,7 @@ export default class AuthenticationController extends BaseApiController {
     @requestBody() body: SignUpRequestDTO,
     @response() res: Response
   ): Promise<Response<SignInResponseDTO>> {
-    const singUpResponse = this.authService.singUp(body);
+    const singUpResponse = await this.authService.singUp(body);
 
     return res
       .status(HttpStatusCodes.Ok)

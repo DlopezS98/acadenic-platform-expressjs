@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Container } from 'inversify';
+import { Container, BindingScopeEnum } from 'inversify';
 import Interfaces from '@Interfaces/interfaces-inversify.mappings';
 import IUsersRepository from '@Interfaces/repositories/iusers.repository';
 import UsersRepository from '@Repositories/users.repository';
@@ -11,6 +11,10 @@ import IAuthenticationService from '@Interfaces/services/iauthentication.service
 import AuthenticationService from '@Services/authentication.service';
 import IUsersService from '@Interfaces/services/iusers.service';
 import UsersService from '@Services/users.service';
+import JwtAuthenticationMiddleware from './middlewares/jwt-authentication.middleware';
+import Middlewares from './middlewares/middleware.mappings';
+// import Middlewares, { constantValues } from './middlewares/middleware.mappings';
+// import JWTPayload from '@Shared/types/jwt.payload';
 
 // DI: Dependency Injection
 export default class InversifyDIContainer {
@@ -18,7 +22,7 @@ export default class InversifyDIContainer {
 
   constructor() {
     this.container = new Container({
-      defaultScope: 'Singleton',
+      defaultScope: BindingScopeEnum.Singleton,
     });
   }
 
@@ -44,6 +48,16 @@ export default class InversifyDIContainer {
       .bind<IAuthenticationService>(Interfaces.AuthenticationService)
       .to(AuthenticationService)
       .inRequestScope();
+
+    // Middlewares...
+    this.container
+      .bind<JwtAuthenticationMiddleware>(Middlewares.JwtAuthentication)
+      .to(JwtAuthenticationMiddleware);
+
+    // this.container
+    //   .bind<JWTPayload>(constantValues.CurrentUser)
+    //   .toConstantValue({ email: 'somevalue@gmail.com' } as JWTPayload);
+    // this.container.applyMiddleware(JwtAuthenticationMiddleware)
     return this.container;
   }
 }

@@ -50,7 +50,7 @@ export default class UsersService implements IUsersService {
     if(!entity) throw new NotFoundException('The user doesn\x27t exists!');
 
     const passwordsAreNotEquals = await this.usersRepository.matchPassword(entity.password, password);
-    if(passwordsAreNotEquals) throw new BadRequestException('The password is wrong!');
+    if(!passwordsAreNotEquals) throw new BadRequestException('The password is wrong!');
     
     return this.mapEntityToDto(entity);
   }

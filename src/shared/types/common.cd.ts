@@ -41,3 +41,4 @@ export type MimeTypes =
   | 'image/png'
   | 'video/mp4'
   | 'image/jpeg';
+export type GenericObject = Record<string, unknown>;

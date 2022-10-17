@@ -37,7 +37,8 @@
       "@Services/*": ["src/core/services/*"],
       "@Entities/*": ["src/core/entities/*"],
       "@DTOs/*": ["src/core/DTOs/*"],
-      "@Repositories/*": ["src/infrastructure/repositories/*"]
+      "@Repositories/*": ["src/infrastructure/repositories/*"],
+      "@Middlewares/*": ["src/middlewares/*"]
     },                                      
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */

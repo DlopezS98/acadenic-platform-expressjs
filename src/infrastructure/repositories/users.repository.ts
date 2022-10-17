@@ -7,18 +7,26 @@ import { compare } from 'bcrypt';
 
 @injectable()
 export default class UsersRepository implements IUsersRepository {
-
-  matchPassword(currentPassword: string, incomingPassword: string): Promise<boolean> {
-    return compare(currentPassword, incomingPassword);
+  matchPassword(
+    encryptedPassword: string,
+    incomingPassword: string
+  ): Promise<boolean> {
+    return compare(incomingPassword, encryptedPassword);
   }
 
   async getByEmail(email: string): Promise<IUser | undefined> {
-    const userModel = await Users.query().findOne('normalizedEmail', email);
+    const userModel = await Users.query().findOne(
+      'normalizedEmail',
+      Users.getNormalizedValue(email)
+    );
     return userModel ? this.mapModelToEntity(userModel) : undefined;
   }
 
   async getByUsername(username: string): Promise<IUser | undefined> {
-    const userModel = await Users.query().findOne('normalizedUsername', username);
+    const userModel = await Users.query().findOne(
+      'normalizedUsername',
+      Users.getNormalizedValue(username)
+    );
     return userModel ? this.mapModelToEntity(userModel) : undefined;
   }
 

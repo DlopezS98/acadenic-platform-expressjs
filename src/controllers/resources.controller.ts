@@ -2,7 +2,7 @@ import { PartialResourceDTO, ResourceDTO } from '@DTOs/resource.dto';
 import Interfaces from '@Interfaces/interfaces-inversify.mappings';
 import IResourcesService from '@Interfaces/services/iresources.service';
 import HttpStatusCodes from '@Shared/types/http-status-codes';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { inject } from 'inversify';
 import {
   controller,
@@ -10,15 +10,20 @@ import {
   httpPost,
   requestBody,
   response,
+  request,
 } from 'inversify-express-utils';
+import Middlewares from '@Middlewares/middleware.mappings';
+// import Middlewares, { constantValues } from '@Middlewares/middleware.mappings';
+// import JWTPayload from '@Shared/types/jwt.payload';
 import BaseApiController from './base-api.controller';
 
-@controller('/resources')
+@controller('/resources', Middlewares.JwtAuthentication)
 export default class ResourcesController extends BaseApiController {
   constructor(
     @inject(Interfaces.ResourcesService)
     private readonly resourcesService: IResourcesService
-  ) {
+  ) // @inject(constantValues.CurrentUser) private readonly currentUser: JWTPayload
+  {
     super();
   }
 
@@ -32,10 +37,15 @@ export default class ResourcesController extends BaseApiController {
 
   @httpPost('/')
   public async create(
+    @request() req: Request,
     @response() res: Response,
     @requestBody() body: PartialResourceDTO
   ): Promise<Response<ResourceDTO>> {
-    const resource = await this.resourcesService.create(body, '4558a0b4-9963-42b3-8088-eb4849b5a215');
+    const jwtPayload = req.app.get('user');
+    const resource = await this.resourcesService.create(
+      body,
+      jwtPayload?.id ?? ''
+    );
     return res.status(HttpStatusCodes.Ok).json(resource);
   }
 }

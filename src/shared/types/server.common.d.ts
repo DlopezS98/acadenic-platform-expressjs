@@ -1,4 +1,5 @@
 import { ObjectKeys } from './common.cd';
+import JWTPayload from './jwt.payload';
 
 export interface PackageJson {
   name: string;
@@ -17,6 +18,7 @@ export interface Settings {
   pkg: PackageJson;
   port: number;
   env: string;
+  user?: JWTPayload
 }
 
 export type SettingsKeys = ObjectKeys<Settings>;
