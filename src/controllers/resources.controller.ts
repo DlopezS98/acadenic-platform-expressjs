@@ -41,10 +41,10 @@ export default class ResourcesController extends BaseApiController {
     @response() res: Response,
     @requestBody() body: PartialResourceDTO
   ): Promise<Response<ResourceDTO>> {
-    const jwtPayload = req.app.get('user');
+    const user = this.getCurrentUser(req);
     const resource = await this.resourcesService.create(
       body,
-      jwtPayload?.id ?? ''
+      user?.id ?? ''
     );
     return res.status(HttpStatusCodes.Ok).json(resource);
   }
